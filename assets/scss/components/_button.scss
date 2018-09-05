@@ -1,17 +1,3 @@
-%buttonPrototype {
-  @include buttonPrototype;
-}
-
-%buttonFilled {
-  @extend %buttonPrototype;
-  @include buttonFilled;
-}
-
-%buttonOutlined {
-  @extend %buttonPrototype;
-  @include buttonOutlined;
-}
-
 // Reset browsers default styles
 button,
 input[type="submit"],
@@ -21,27 +7,25 @@ input[type="button"] {
 }
 
 .trm-btn {
-  @extend %buttonPrototype;
+  @include buttonPrototype;
 
   &--filled {
-    @extend %buttonFilled;
+    @include buttonFilled;
   }
 
   &--outlined {
-    @extend %buttonOutlined;
+    @include buttonOutlined;
   }
 }
 
 // Theme colors
 @each $name, $color in $theme-colors {
   .trm-btn--filled.trm-#{$name} {
-    @extend %buttonPrototype;
-    @include buttonFilled($name);
+    @include buttonFilledTheme($name);
   }
 
   .trm-btn--outlined.trm-#{$name} {
-    @extend %buttonPrototype;
-    @include buttonOutlined($name);
+    @include buttonOutlinedTheme($name);
   }
 }
 

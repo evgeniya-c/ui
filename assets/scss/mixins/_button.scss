@@ -78,6 +78,26 @@
   }
 }
 
+@mixin buttonFilledTheme($theme: $theme-color-default) {
+  $basic: map_get($theme-colors,$theme);
+
+  &:not([disabled=""]):not([disabled="disabled"]) {
+    background: $basic;
+
+    &.trm-hover,
+    &:not(.trm-hover):hover {
+      background: lighten($basic, 20);
+      box-shadow: 0 4px 8px 0 rgba(darken($basic, 10), 0.16);
+    }
+
+    &.trm-active,
+    &:not(.trm-active):active {
+      border-color: darken($basic, 10);
+      background: darken($basic, 10);
+    }
+  }
+}
+
 // Outlined
 @mixin buttonOutlined($theme: $theme-color-default) {
   $basic: map_get($theme-colors,$theme);
@@ -105,5 +125,24 @@
     color: $btn-disabled-color;
     border-color: $btn-disabled-border-color;
     background: transparent;
+  }
+}
+
+@mixin buttonOutlinedTheme($theme: $theme-color-default) {
+  $basic: map_get($theme-colors,$theme);
+
+  &:not([disabled=""]):not([disabled="disabled"]) {
+    color: $basic;
+
+    &.trm-hover,
+    &:not(.trm-hover):hover {
+      color: lighten($basic, 20);
+      background: lighten($basic, 95);
+    }
+
+    &.trm-active,
+    &:not(.trm-active):active {
+      color: darken($basic, 10);
+    }
   }
 }
