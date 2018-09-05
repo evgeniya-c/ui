@@ -1,0 +1,9 @@
+# IDEs
+/.idea
+
+# System files
+.DS_Store
+.sass-cache
+*.css.map
+*.js.map
+/node_modules/*
