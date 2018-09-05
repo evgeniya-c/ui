@@ -1,0 +1,54 @@
+%buttonPrototype {
+  @include buttonPrototype;
+}
+
+%buttonFilled {
+  @extend %buttonPrototype;
+  @include buttonFilled;
+}
+
+%buttonOutlined {
+  @extend %buttonPrototype;
+  @include buttonOutlined;
+}
+
+// Reset browsers default styles
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @include buttonDrop;
+}
+
+.trm-btn {
+  @extend %buttonPrototype;
+
+  &--filled {
+    @extend %buttonFilled;
+  }
+
+  &--outlined {
+    @extend %buttonOutlined;
+  }
+}
+
+// Theme colors
+@each $name, $color in $theme-colors {
+  .trm-btn--filled.trm-#{$name} {
+    @extend %buttonPrototype;
+    @include buttonFilled($name);
+  }
+
+  .trm-btn--outlined.trm-#{$name} {
+    @extend %buttonPrototype;
+    @include buttonOutlined($name);
+  }
+}
+
+// Element sizes
+@each $name, $props in $btn-sizes {
+  .trm-btn.trm-#{$name} {
+    @include buttonSize($name);
+  }
+}
+

@@ -1,0 +1,109 @@
+/*
+* Drop browsers styles
+*/
+@mixin buttonDrop {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+// Button Sizes
+@mixin buttonSize($size) {
+  $props: map_get($btn-sizes, $size);
+  padding: 0 map_get($props,'paddingX');
+  font-size: map_get($props,'fontSize');
+  line-height: map_get($props,'height') - 2*$btn-border-width;
+}
+
+/*
+* Button prototype
+*/
+@mixin buttonPrototype {
+  position: relative;
+  display: inline-block;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  border: $btn-border-width solid transparent;
+  user-select: none;
+  transition: all 0.3s;
+  @include border-radius($btn-border-radius);
+  @include buttonSize($btn-size-default);
+
+  &:not([disabled=""]),
+  &:not([disabled="disabled"]) {
+    cursor: pointer;
+  }
+
+  &[disabled=""],
+  &[disabled="disabled"] {
+    pointer-events: none;
+  }
+}
+
+/*
+* Type buttons
+*/
+
+// Filled
+@mixin buttonFilled($theme: $theme-color-default) {
+  $basic: map_get($theme-colors,$theme);
+
+  color: #fff;
+  background: $basic;
+
+  &.trm-hover,
+  &:not(.trm-hover):hover {
+    background: lighten($basic, 20);
+    box-shadow: 0 4px 8px 0 rgba(darken($basic,10), 0.16);
+  }
+
+  &.trm-active,
+  &:not(.trm-active):active {
+    border-color: darken($basic,10);
+    background: darken($basic,10);
+    box-shadow: none;
+  }
+
+  &[disabled=""],
+  &[disabled="disabled"] {
+    background: $btn-disabled-bg;
+  }
+}
+
+// Outlined
+@mixin buttonOutlined($theme: $theme-color-default) {
+  $basic: map_get($theme-colors,$theme);
+
+  color: $basic;
+  border-color: $form-control-border-color;
+
+  &.trm-hover,
+  &:not(.trm-hover):hover {
+    color: lighten($basic, 20);
+    background: lighten($basic, 95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  &.trm-active,
+  &:not(.trm-active):active {
+    color: darken($basic, 10);
+    background: transparent;
+    border-color: $form-control-focus-border-color;
+    box-shadow: none;
+  }
+
+  &[disabled=""],
+  &[disabled="disabled"] {
+    color: $btn-disabled-color;
+    border-color: $btn-disabled-border-color;
+    background: transparent;
+  }
+}
