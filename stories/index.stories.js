@@ -1,9 +1,72 @@
-/* global document */
-import {storiesOf} from '@storybook/html';
-import '../assets/scss/style.scss';
+import { document } from 'global';
+import { storiesOf } from '@storybook/html';
+import {
+  array,
+  boolean,
+  button,
+  color,
+  date,
+  select,
+  text,
+  number,
+  withKnobs,
+} from '@storybook/addon-knobs';
 
+import financeTheme from '../assets/scss/finance.scss';
+import minfinTheme from '../assets/scss/minfin.scss';
+
+/*import welcome from './welcome.html';
+storiesOf('Welcome', module)
+  .add('Welcome', () => welcome);*/
 
 storiesOf('Button', module)
-  .add('Prototype', () => '<h3>Прототип кнопки</h3> <button class="trm-btn">Prototype</button>')
-  .add('Filled', () => '<h3>Залитая кнопка</h3> <button class="trm-btn trm-btn--filled trm-sm">primary sm</button> <button class="trm-btn trm-btn--filled trm-secondary trm-sm">secondary sm</button> <button class="trm-btn trm-btn--filled">primary md</button> <button class="trm-btn trm-btn--filled trm-secondary">secondary md</button> <button class="trm-btn trm-btn--filled trm-lg">primary lg</button> <button class="trm-btn trm-btn--filled trm-secondary trm-lg">secondary lg</button> <button class="trm-btn trm-btn--filled trm-secondary trm-lg" disabled>disabled</button>')
-  .add('Outlined', () => '<h3>Обведенная кнопки</h3> <button class="trm-btn trm-btn--outlined trm-sm">primary sm</button> <button class="trm-btn trm-btn--outlined trm-secondary trm-sm">secondary sm</button> <button class="trm-btn trm-btn--outlined">primary md</button> <button class="trm-btn trm-btn--outlined trm-secondary">secondary md</button> <button class="trm-btn trm-btn--outlined trm-lg">primary lg</button> <button class="trm-btn trm-btn--outlined trm-secondary trm-lg">secondary lg</button> <button class="trm-btn trm-btn--outlined trm-secondary trm-lg" disabled>disabled</button>');
+  .addDecorator(withKnobs)
+  .add('Button', () => {
+
+    const types = {
+      button: 'button',
+      reset: 'reset',
+      search: 'search'
+
+    };
+
+    const themes = {
+      primary: 'primary',
+      secondary: 'secondary'
+    };
+
+    const views = {
+      filled: 'filled',
+      outlined: 'outlined'
+    };
+
+    const projects = {
+      finance: 'finance',
+      minfin: 'minfin'
+    };
+
+    const sizes = {
+      sm: 'small',
+      md: 'middle',
+      lg: 'large'
+    };
+
+    const label = text('Label', 'Заявка онлайн');
+    const type = select('Type', types, 'button');
+    const theme = select('Theme', themes, 'primary');
+    const view = select('View', views, 'filled');
+    const size = select('Size', sizes, 'middle');
+    const project = select('Project', projects, 'finance');
+    const disabled = boolean('Disabled', false);
+    const className = `trm-btn trm-${theme} trm-btn--${view} trm-${size}`;
+
+    if(project === 'minfin') {
+      minfinTheme.use();
+      financeTheme.unuse();
+    } else {
+      financeTheme.use();
+      minfinTheme.unuse();
+    }
+
+    return `<button type="${type}" class="${className}" disabled="${disabled}">${label}</button>`;
+  });

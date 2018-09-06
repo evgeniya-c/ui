@@ -5,9 +5,14 @@ module.exports = {
     rules: [
       {
         test: /\.s?css$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"],
+        loaders: ["style-loader/useable", "css-loader", "sass-loader"],
         include: path.resolve(__dirname, "../")
-      }
+      },
+      {
+        test: /\.stories\.jsx?$/,
+        loaders: [require.resolve('@storybook/addon-storysource/loader')],
+        enforce: 'pre',
+      },
     ]
   }
 };

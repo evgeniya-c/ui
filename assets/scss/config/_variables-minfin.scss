@@ -1,0 +1,161 @@
+/*
+* Colors
+*/
+
+$white: #fff;
+$black: #000;
+
+// Black palette
+$black-85: mix($black, $white, 85);                     // #252525
+$black-63: mix($black, $white, 63);                     // #5F5F5F
+$black-43: mix($black, $white, 43);                     // #919191
+$black-24: mix($black, $white, 24);                     // #C1C1C1
+$black-10: mix($black, $white, 10);                     // #E6E6E6
+$black-5: mix($black, $white, 5);                       // #F2F2F2
+
+// Neutral palette
+$neutral: #AABACB;
+$neutral-darken-10: mix($black, $neutral, 10);          // #99A7B7
+$neutral-lighten-20: mix($white, $neutral, 20);         // #BBC8D5
+$neutral-lighten-50: mix($white, $neutral, 50);         // #D5DDE5
+$neutral-lighten-70: mix($white, $neutral, 70);         // #E6EAEF
+$neutral-lighten-90: mix($white, $neutral, 90);         // #F7F8Fa
+$neutral-lighten-95: mix($white, $neutral, 95);         // #FBFCFC
+
+// Primary palette
+$primary: #df3014;
+$primary-darken-10: mix($black, $primary, 10);          // #1DAC4D
+$primary-lighten-20: mix($white, $primary, 20);         // #4DCC77
+$primary-lighten-50: mix($white, $primary, 50);         // #90DFAA
+$primary-lighten-70: mix($white, $primary, 70);         // #BCECCC
+$primary-lighten-85: mix($white, $primary, 85);         // #DEF5E6
+$primary-lighten-95: mix($white, $primary, 95);         // #F4FCF7
+
+// Secondary palette
+$secondary: #2b76cc;
+$secondary-darken-10: mix($black, $secondary, 10);      // #00ACD9
+$secondary-lighten-20: mix($white, $secondary, 20);     // #33CCF4
+$secondary-lighten-50: mix($white, $secondary, 50);     // #80DFF8
+$secondary-lighten-70: mix($white, $secondary, 70);     // #B3ECFB
+$secondary-lighten-85: mix($white, $secondary, 85);     // #D9F5FD
+$secondary-lighten-95: mix($white, $secondary, 95);     // #F2FCFE
+
+// Accent palette
+$accent: #F79722;
+$accent-darken-10: mix($black, $accent, 10);            // #DE881F
+$accent-lighten-20: mix($white, $accent, 20);           // #F9AC4E
+$accent-lighten-50: mix($white, $accent, 50);           // #FBCB91
+$accent-lighten-70: mix($white, $accent, 70);           // #FDE0BD
+$accent-lighten-85: mix($white, $accent, 85);           // #FEEFDE
+$accent-lighten-95: mix($white, $accent, 95);           // #FFFAF4
+
+// Error palette
+$error: #E57373;
+$error-darken-10: mix($black, $error, 10);              // #CE6868
+$error-lighten-20: mix($white, $error, 20);             // #EA8F8F
+$error-lighten-50: mix($white, $error, 50);             // #F2B9B9
+$error-lighten-70: mix($white, $error, 70);             // #F7D5D5
+$error-lighten-85: mix($white, $error, 85);             // #FBEAEA
+$error-lighten-95: mix($white, $error, 95);             // #FEF8F8
+
+// Link palette
+$link: #0277BD;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    "primary": $primary,
+    "secondary": $secondary,
+    "accent": $accent,
+), $theme-colors);
+
+$theme-color-default: 'primary';
+
+/*
+* Typography
+*/
+
+$font-family-primary: 'Open Sans', sans-serif;
+$font-family-secondary: 'Raleway', sans-serif;
+
+/*
+* Body
+*/
+
+$body-bg: $white !default;
+$body-color: $black-85 !default;
+
+/*
+* Shapes
+*/
+
+$element-size-map: (sm: 40px, md: 48px, lg: 56px);
+$border-radius-map: (xs: 2px, sm: 4px, md: 8px, lg: 12px);
+
+/*
+* Form control elements
+*/
+
+$form-control-font-family: $font-family-primary;
+$form-control-color: $black;
+$form-control-border-width: 1px;
+$form-control-border-radius: map_get($border-radius-map,'xs');
+$form-control-border-color: $black-10;
+$form-control-placeholder-color: $black-24;
+$form-control-error-color: $error;
+$form-control-hover-border-color: $black-10;
+$form-control-focus-border-color: $black-24;
+$form-control-disabled-color: $black-24;
+$form-control-disabled-border-color: $black-24;
+$form-control-disabled-background: $black-5;
+
+// Sizes
+$form-control-sizes: (
+    lg: (
+        fontSize: 16px,
+        paddingX: 16px,
+        height: map_get($element-size-map,'lg')
+    ),
+    md: (
+        fontSize: 16px,
+        paddingX: 16px,
+        height: map_get($element-size-map,'md')
+    ),
+    sm: (
+        fontSize: 13px,
+        paddingX: 12px,
+        height: map_get($element-size-map,'sm')
+    )
+);
+
+$form-control-size-default: 'md';
+
+/*
+* Buttons
+*/
+$btn-font-family: $font-family-primary;
+$btn-font-weight: 600;
+$btn-border-width: 1px;
+$btn-border-radius: map_get($border-radius-map,'sm');
+$btn-disabled-color: $black-10;
+$btn-disabled-bg: $black-10;
+$btn-disabled-border-color: $black-10;
+
+// Custom sizes
+$btn-sizes: (
+    lg: (
+        fontSize: 16px,
+        paddingX: 16px,
+        height: map_get($element-size-map,'lg')
+    ),
+    md: (
+        fontSize: 16px,
+        paddingX: 16px,
+        height: map_get($element-size-map,'md')
+    ),
+    sm: (
+        fontSize: 14px,
+        paddingX: 12px,
+        height: map_get($element-size-map,'sm')
+    )
+);
+$btn-size-default: 'md';
