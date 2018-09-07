@@ -37,13 +37,12 @@
   @include border-radius($btn-border-radius);
   @include buttonSize($btn-size-default);
 
-  &:not([disabled=""]),
-  &:not([disabled="disabled"]) {
+  &:not(.trm-disabled):not(:disabled) {
     cursor: pointer;
   }
 
-  &[disabled=""],
-  &[disabled="disabled"] {
+  &.trm-disabled,
+  &:disabled {
     pointer-events: none;
   }
 }
@@ -72,8 +71,8 @@
     box-shadow: none;
   }
 
-  &[disabled=""],
-  &[disabled="disabled"] {
+  &.trm-disabled,
+  &:disabled {
     background: $btn-disabled-bg;
   }
 }
@@ -81,7 +80,7 @@
 @mixin buttonFilledTheme($theme: $theme-color-default) {
   $basic: map_get($theme-colors,$theme);
 
-  &:not([disabled=""]):not([disabled="disabled"]) {
+  &:not(.trm-disabled):not(:disabled) {
     background: $basic;
 
     &.trm-hover,
@@ -120,8 +119,8 @@
     box-shadow: none;
   }
 
-  &[disabled=""],
-  &[disabled="disabled"] {
+  &.trm-disabled,
+  &:disabled {
     color: $btn-disabled-color;
     border-color: $btn-disabled-border-color;
     background: transparent;
@@ -131,7 +130,7 @@
 @mixin buttonOutlinedTheme($theme: $theme-color-default) {
   $basic: map_get($theme-colors,$theme);
 
-  &:not([disabled=""]):not([disabled="disabled"]) {
+  &:not(.trm-disabled):not(:disabled) {
     color: $basic;
 
     &.trm-hover,
