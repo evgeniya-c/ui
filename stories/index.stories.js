@@ -84,9 +84,9 @@ storiesOf('Buttons', module)
 
     let code = `<button type="${type}" class="${className}" ${disabled}>\n\t${label}\n</button>`;
     let codeNormalize = code = nw.normalize(code);
+    let copyCode = code.replace(/\n|\t/g,'');
     let html = Prism.highlight(codeNormalize, Prism.languages.markup, 'markup');
     let markup = `<pre class="language-markup"><code class="language-markup">${html}</code></pre>`;
-
     let clipboard = new ClipboardJS('[data-clipboard-text]');
 
     clipboard.on('success', function(e) {
@@ -97,5 +97,5 @@ storiesOf('Buttons', module)
     return code
       + `<br/><br/><h2>Html markup:</h2>`
       + markup
-      + `<button style="border: 1px solid #ccc; padding: 5px" data-clipboard-text='${code}'>copy</button>`;
+      + `<button style="border: 1px solid #ccc; padding: 5px" data-clipboard-text='${copyCode}'>copy</button>`;
   });
