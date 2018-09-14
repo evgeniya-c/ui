@@ -68,11 +68,16 @@ storiesOf('Buttons', module)
     const label = text('Label', 'Заявка онлайн');
     const color = select('Color', colors, 'primary');
     const fill = select('Fill type', fills, 'filled');
-    const size = select('Size', sizes, 'middle');
+    const size = select('Size', sizes, 'md');
     const type = select('Type', types, 'button');
     const disabled = boolean('Disabled', false) === true ? `disabled` : ``;
     const prototype = boolean('Show prototype', false);
-    const className = `trm-btn` + (!prototype ? ` trm-${color} trm-btn--${fill} trm-${size}` : ``);
+    let className = `trm-btn`;
+    if(!prototype) {
+      className += ` trm-btn--${fill}`;
+      if (color !== 'primary') className += ` trm-${color}`;
+      if (size !== 'md') className += ` trm-${size}`;
+    }
 
     if(theme === 'minfin') {
       minfinTheme.use();
